@@ -2,7 +2,7 @@ locals {
   any_port = 0
   http_port = 80
   tcp_protocal = "tcp"
-  all_ips = [ "0.0.0.0/0" ]
+  all_ips = ["0.0.0.0/0"]
 }
 
 data "aws_vpc" "default" {
@@ -166,7 +166,6 @@ resource "aws_security_group_rule" "allow_http_inbound" {
   cidr_blocks = local.all_ips
   ipv6_cidr_blocks = []
   prefix_list_ids = []
-  self = false
 }
 
 resource "aws_security_group_rule" "allow_all_outbound" {
@@ -180,7 +179,6 @@ resource "aws_security_group_rule" "allow_all_outbound" {
   cidr_blocks = local.all_ips
   ipv6_cidr_blocks = []
   prefix_list_ids = []
-  self = false
 }
 
 resource "aws_lb_target_group" "asg" {
